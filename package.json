@@ -15,7 +15,7 @@
   },
   "homepage": "https://github.com/danielres/le-config",
   "scripts": {
-    "check:types": "yarn tsc --noEmit",
+    "check:types": "yarn tsc **/*.ts --noEmit",
     "clean": "rm -rf dist",
     "prebuild": "yarn clean",
     "build": "bili",
