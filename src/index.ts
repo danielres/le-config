@@ -2,6 +2,7 @@ import LeConfigValidationError, {
   prettyPrint,
 } from "./errors/LeConfigValidationError";
 import * as obj from "./helpers/object";
+export * as checks from "./checks";
 
 export const validate = (config) => {
   let errors = [];
