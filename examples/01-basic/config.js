@@ -1,4 +1,4 @@
-import validate, { checks } from "../../../2020-06-le-config/dist/index.esm.js";
+import validate, { checks } from "@danielres/le-config";
 
 const config = {
   PORT: [process.env.PORT, checks.int.port()],
