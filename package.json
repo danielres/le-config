@@ -21,7 +21,7 @@
     "build": "bili",
     "prepublishOnly": "run-s check:types test:once build",
     "test": "yarn test:once --extension ts -w",
-    "test:once": "mocha -r ts-node/register **/**.test.ts",
+    "test:once": "mocha -r ts-node/register '**/**.test.ts'",
     "coverage": "nyc -r lcov -e .ts -x \"**/*.test.ts\" yarn test:once && coveralls < coverage/lcov.info"
   },
   "dependencies": {},
