@@ -7,7 +7,7 @@
     "dev": "env-cmd nodemon -r esm ./index.js"
   },
   "dependencies": {
-    "@danielres/le-config": "^0.0.4",
+    "@danielres/le-config": "file:../../dist",
     "esm": "^3.2.25",
     "express": "^4.17.1"
   },
