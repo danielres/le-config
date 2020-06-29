@@ -32,6 +32,8 @@ describe("int", () => {
           },
         };
 
+        expect(() => validate(config)).to.throw(LeConfigValidationError);
+
         try {
           validate(config);
         } catch (e) {
@@ -67,6 +69,8 @@ describe("int", () => {
           NOK2: [env.NOK2, int.within(1, 10)],
           NOK3: [env.NOK3, int.within(1, 10)],
         };
+
+        expect(() => validate(config)).to.throw(LeConfigValidationError);
 
         try {
           validate(config);
@@ -114,10 +118,11 @@ describe("int", () => {
           NOK3: [env.NOK3, int.port()],
         };
 
+        expect(() => validate(config)).to.throw(LeConfigValidationError);
+
         try {
           validate(config);
         } catch (e) {
-          expect(e.name).to.eql(LeConfigValidationError.name);
           expect(e.message).to.eql("3 config validation errors");
           expect(e.errors).to.eql([
             {

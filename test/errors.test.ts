@@ -22,6 +22,8 @@ describe("errors", () => {
         },
       };
 
+      expect(() => validate(config)).to.throw(LeConfigValidationError);
+
       try {
         validate(config);
       } catch (e) {
