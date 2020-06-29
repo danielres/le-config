@@ -5,7 +5,7 @@ import * as int from "./int";
 
 describe("int", () => {
   describe(".int", () => {
-    describe("given valid + invalid + missing vars", () => {
+    describe("given valid + invalid + missing ints", () => {
       const env = {
         OK1: "150",
         OK2: "200",
@@ -87,6 +87,52 @@ describe("int", () => {
             {
               key: "NOK3",
               error: "should be an integer within 1 and 10",
+              actual: undefined,
+            },
+          ]);
+        }
+      });
+    });
+  });
+
+  describe(".port()", () => {
+    describe("given valid + invalid + missing vars", () => {
+      const env = {
+        OK1: "3000",
+        OK2: "64000",
+        NOK1: "0",
+        NOK2: "1000",
+        NOK3: undefined,
+      };
+
+      it("throws a LeConfigValidationError with summary + details", () => {
+        const config = {
+          OK1: [env.OK1, int.port()],
+          OK2: [env.OK2, int.port()],
+          NOK1: [env.NOK1, int.port()],
+          NOK2: [env.NOK2, int.port()],
+          NOK3: [env.NOK3, int.port()],
+        };
+
+        try {
+          validate(config);
+        } catch (e) {
+          expect(e.name).to.eql(LeConfigValidationError.name);
+          expect(e.message).to.eql("3 config validation errors");
+          expect(e.errors).to.eql([
+            {
+              actual: "0",
+              error: "should be an integer within 1025 and 65534",
+              key: "NOK1",
+            },
+            {
+              key: "NOK2",
+              error: "should be an integer within 1025 and 65534",
+              actual: "1000",
+            },
+            {
+              key: "NOK3",
+              error: "should be an integer within 1025 and 65534",
               actual: undefined,
             },
           ]);
