@@ -36,4 +36,27 @@ describe("errors", () => {
       }
     });
   });
+
+  describe("inflections", () => {
+    const env = {
+      NOK: undefined,
+    };
+
+    describe("given only 1 error", () => {
+      it("outputs the message in singular form", () => {
+        const config = {
+          NOK: [env.NOK, int.int],
+        };
+
+        expect(() => validate(config)).to.throw(LeConfigValidationError);
+
+        try {
+          validate(config);
+        } catch (e) {
+          expect(e.name).to.eql(LeConfigValidationError.name);
+          expect(e.message).to.eql("1 config validation error");
+        }
+      });
+    });
+  });
 });
