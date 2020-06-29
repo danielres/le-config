@@ -1,14 +1,7 @@
 import { expect } from "chai";
-import * as sinon from "sinon";
 import validate from "../src";
 import * as int from "../src/checks/int";
 import LeConfigValidationError from "../src/errors/LeConfigValidationError";
-import * as log from "../src/helpers/log";
-
-const muteConsole = () => sinon.replace(log, "log", sinon.fake());
-
-beforeEach(muteConsole);
-afterEach(sinon.restore);
 
 describe("given invalid + missing vars", () => {
   const env = {

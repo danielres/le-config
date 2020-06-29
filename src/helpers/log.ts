@@ -1,4 +1,4 @@
-export const log = console.log;
+export const log = process.env.LOG !== "false" ? console.log : () => {};
 
 export const errorSummary = (str) => log(` ${str}:`);
 
