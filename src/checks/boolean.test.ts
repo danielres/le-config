@@ -5,10 +5,12 @@ import { boolean } from "./boolean";
 
 describe("boolean", () => {
   describe(".boolean", () => {
-    describe(`given strings "true" or "false" `, () => {
+    describe.only(`given any of: true, false, "true", "false" `, () => {
       const env = {
         OK1: "true",
         OK2: "false",
+        OK3: true,
+        OK4: false,
       };
 
       it("returns a valid project config", () => {
@@ -16,13 +18,22 @@ describe("boolean", () => {
           OK1: [env.OK1, boolean],
           nested: {
             OK2: [env.OK2, boolean],
+            OK3: [env.OK3, boolean],
+            OK4: [env.OK4, boolean],
           },
         };
 
         expect(() => validate(config)).not.to.throw();
 
         const actual = validate(config);
-        const expected = { OK1: true, nested: { OK2: false } };
+        const expected = {
+          OK1: true,
+          nested: {
+            OK2: false,
+            OK3: true,
+            OK4: false,
+          },
+        };
 
         expect(actual).to.eql(expected);
       });
