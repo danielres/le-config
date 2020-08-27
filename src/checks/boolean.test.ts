@@ -5,7 +5,7 @@ import { boolean } from "./boolean";
 
 describe("boolean", () => {
   describe(".boolean", () => {
-    describe.only(`given any of: true, false, "true", "false" `, () => {
+    describe(`given any of: true, false, "true", "false" `, () => {
       const env = {
         OK1: "true",
         OK2: "false",
