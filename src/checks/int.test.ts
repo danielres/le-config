@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import validate from "..";
-import LeConfigValidationError from "../errors/LeConfigValidationError";
+import { LeConfigValidationError } from "../errors/LeConfigValidationError";
+import { validate } from "../validate";
 import * as int from "./int";
 
 describe("int", () => {

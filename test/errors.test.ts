@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import validate from "../src";
+import { validate } from "../src";
 import * as int from "../src/checks/int";
-import LeConfigValidationError from "../src/errors/LeConfigValidationError";
+import { LeConfigValidationError } from "../src/errors/LeConfigValidationError";
 
 describe("errors", () => {
   describe("given valid + invalid + missing vars", () => {

@@ -1,34 +1,17 @@
-import LeConfigValidationError, {
-  prettyPrint,
-} from "./errors/LeConfigValidationError";
-import * as obj from "./helpers/object";
+export * from "../src/errors/LeConfigValidationError";
 export * as checks from "./checks";
+export * from "./validate";
 
-export const validate = (config) => {
-  let errors = [];
+import { handleError } from "../src/errors/LeConfigValidationError";
+import { validate } from "./validate";
+export const makeConfig = (definition) => {
+  let config;
 
-  const replacer = (key, v) => {
-    const [value, [convert, validate, error]] = v;
-
-    const converted = convert(value);
-
-    const isValid = validate(converted);
-    if (!isValid) errors = [...errors, { key, error, actual: value }];
-
-    return converted;
-  };
-
-  const result = obj.walk(config, replacer);
-
-  if (errors.length) throw new LeConfigValidationError(errors);
-  return result;
-};
-
-export default (config) => {
   try {
-    return validate(config);
+    config = validate(definition);
   } catch (error) {
-    prettyPrint(error);
-    throw error;
+    handleError(error);
   }
+
+  return config;
 };

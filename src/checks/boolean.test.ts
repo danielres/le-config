@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import validate from "..";
-import LeConfigValidationError from "../errors/LeConfigValidationError";
+import { LeConfigValidationError } from "../errors/LeConfigValidationError";
+import { validate } from "../validate";
 import { boolean } from "./boolean";
 
 describe("boolean", () => {
@@ -43,7 +43,7 @@ describe("boolean", () => {
       const env = {
         OK1: "true",
         OK2: "false",
-        NOK1: undefined,
+        NOK1: undefined as any,
         NOK2: "1",
         NOK3: 1,
         NOK4: "t",

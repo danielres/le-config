@@ -1,6 +1,6 @@
 import * as log from "../helpers/log";
 
-export default class LeConfigValidationError extends Error {
+export class LeConfigValidationError extends Error {
   errors: any;
 
   constructor(messages) {
@@ -12,7 +12,7 @@ export default class LeConfigValidationError extends Error {
   }
 }
 
-export const prettyPrint = (error: LeConfigValidationError) => {
+export const handleError = (error: LeConfigValidationError) => {
   const { errors, message } = error;
 
   log.ln();
@@ -21,4 +21,6 @@ export const prettyPrint = (error: LeConfigValidationError) => {
   errors.map(log.error);
   log.hr();
   log.ln();
+
+  process.exit(1);
 };

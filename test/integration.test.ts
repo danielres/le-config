@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import validate from "../src";
-import * as int from "../src/checks/int";
+import { validate } from "../src";
 import { boolean } from "../src/checks/boolean";
+import * as int from "../src/checks/int";
 import * as env from "./support/env";
 
 describe("integration", () => {
